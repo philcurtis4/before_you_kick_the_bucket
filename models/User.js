@@ -1,8 +1,17 @@
 const { Model, DataTypes } = require('sequelize');
+const { hash, compare } = require('bcrypt');
+
 const sequelize = require('../config/connection');
 
+
 // create our Traveller model
-class User extends Model {}
+class User extends Model {
+	async validatePassword (formPassword) {
+		const is_valid = await compare(formPassword, this.password);
+
+		return is_valid;
+	}
+}
 
 // create fields/columns for Traveller model
 User.init(
@@ -13,9 +22,12 @@ User.init(
       primaryKey: true,
       autoIncrement: true
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+	  validate: {
+		len: 2
+	  }
     },
     email: {
       type: DataTypes.STRING,
@@ -24,14 +36,28 @@ User.init(
       validate: {
         isEmail: true
       }
-    }
+    },
+	password: {
+		type: DataTypes.STRING,
+		allowNull: false,
+		validate: {
+			len: 6
+		}
+	}
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user'
+    modelName: 'user',
+	hooks: {
+		async beforeCreate (user) {
+			user.password = await hash(user.password, 10); 
+
+			return user;
+		}
+	}
   }
 );
 
