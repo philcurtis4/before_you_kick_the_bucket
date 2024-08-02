@@ -1833,6 +1833,16 @@ video {
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
+.bg-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+
+.bg-teal-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 212 191 / var(--tw-bg-opacity));
+}
+
 .decoration-slice {
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
