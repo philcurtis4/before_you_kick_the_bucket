@@ -1,19 +1,19 @@
-const Landmark = require('./Landmark')
 const Place = require('./Place')
 const User = require('./User');
+const Landmark = require('./Landmark')
 
 //One to Many association
-User.hasMany(Place, {
+User.belongsToMany(Place, {
     foreignKey: 'user_id',
     through: User
 })
 
-Place.hasMany(User, {
+Place.belongsToMany(User, {
     foreignKey: 'user_id',
     through: User
 })
 
-Place.hasMany(Landmark, {
+Place.belongsToMany(Landmark, {
     through: 'city_id'
 })
 

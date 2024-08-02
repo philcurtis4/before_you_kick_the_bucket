@@ -21,7 +21,7 @@ Landmark.init(
         unique: true,
       },
         travel_time: {
-        type: Datatypes.DECIMAL,
+        type: DataTypes.DECIMAL,
         allowNull: false,
       }
     },

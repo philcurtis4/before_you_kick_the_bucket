@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Place } = require('../../models');
+const { Landmark } = require('../../models');
 
 router.get('/', async (req, res) => {
 	try {
-	  const placeData = await Place.findAll();
-	  res.status(200).json(placeData);
+	  const landmarkData = await Landmark.findAll();
+	  res.status(200).json(landmarkData);
 	} catch (err) {
 	  res.status(500).json(err);
 	}
@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
   router.get('/:id', async (req, res) => {
 	try {
 		const id = req.params.id;
-	  const placeData = await Place.findByPk(id);
-	  res.status(200).json(placeData);
+	  const landmarkData = await Landmark.findByPk(id);
+	  res.status(200).json(landmarkData);
 	} catch (err) {
 	  res.status(500).json(err);
 	}
@@ -22,8 +22,8 @@ router.get('/', async (req, res) => {
 
   router.post('/', async (req, res) => {
 	try {
-	  const placeData = await Place.create(req.body);
-	  res.status(200).json(placeData);
+	  const landmarkData = await Landmark.create(req.body);
+	  res.status(200).json(landmarkData);
 	} catch (err) {
 	  res.status(400).json(err);
 	}
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
 	try{
 		const id = req.params.id;
 		
-		const place = await Place.update(
+		const landmark = await Landmark.update(
 			req.body,
 			{
 				where: {
@@ -44,11 +44,11 @@ router.get('/', async (req, res) => {
 			}
 		)
 
-		res.status(200).json(place[1]);
+		res.status(200).json(landmark[1]);
 	}catch(err){
 		res.status(400).json(err);
 	}
-  })
+  });
 
 
 
