@@ -5,28 +5,24 @@ class Favorite extends Model { }
 
 Favorite.init(
   {
-    title: {
+		country_name: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		city_name: {
+			type: DataTypes.STRING
+		},
+    landmark_name: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    release_date: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    director: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    imdbID: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    rating: {
-      type: DataTypes.INTEGER
+      allowNull: false,
+      unique: true,
     }
+    // rating: {
+    //   type: DataTypes.INTEGER
+    // }
   },
   {
-    sequelize: client,
+    sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
