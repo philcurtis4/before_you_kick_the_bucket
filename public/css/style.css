@@ -2687,10 +2687,6 @@ video {
   forced-color-adjust: none;
 }
 
-#map {
-  height: 500px;
-  width: 500px;
-}
 
 @media (min-width: 640px) {
   .sm\:container {

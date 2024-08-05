@@ -32,3 +32,17 @@ async function initMap() {
 }
 
 initMap();
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const addFavoriteButtons = document.querySelectorAll('.add-to-favorites');
+  addFavoriteButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+          const destinationId = event.target.dataset.destinationId;
+          addToFavorites(destinationId);
+      });
+  });
+});
+
+
