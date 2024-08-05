@@ -34,7 +34,6 @@ async function initMap() {
 initMap();
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const addFavoriteButtons = document.querySelectorAll('.add-to-favorites');
   addFavoriteButtons.forEach(button => {
