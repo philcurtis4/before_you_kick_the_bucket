@@ -33,9 +33,9 @@ router.get('/search', redirectGuest, async (req, res) => {
 	});
 });
 
-router.get('/results', async (req, res) => {
-	res.render('search_results');
-});
+// router.get('/results', async (req, res) => {
+// 	res.render('search_results');
+// });
 
 router.get('/favorites', redirectGuest, async (req, res) => {
     const user = await User.findByPk(req.session.user_id, {

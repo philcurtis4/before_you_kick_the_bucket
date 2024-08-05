@@ -19,6 +19,7 @@ async function initMap() {
   locationValue  = `${location}, ${city}, ${state}, ${country}`
   const mapLocation = await geocodeAddress(locationValue);
 
+
   map = new Map(document.getElementById("map"), {
     center: mapLocation,
     zoom: 13,
@@ -34,15 +35,14 @@ async function initMap() {
 initMap();
 
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const addFavoriteButtons = document.querySelectorAll('.add-to-favorites');
-  addFavoriteButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
-          const destinationId = event.target.dataset.destinationId;
-          addToFavorites(destinationId);
-      });
-  });
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   const addFavoriteButtons = document.querySelectorAll('.add-to-favorites');
+//   addFavoriteButtons.forEach(button => {
+//       button.addEventListener('click', (event) => {
+//           const destinationId = event.target.dataset.destinationId;
+//           addToFavorites(destinationId);
+//       });
+//   });
+// });
 
 

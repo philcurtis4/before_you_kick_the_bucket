@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 
 router.post('/search', async (req, res) => {
-    console.log(req.body)
+    console.log('form results')
     res.render('search_results', req.body)
 })
 
