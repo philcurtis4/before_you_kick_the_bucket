@@ -26,7 +26,7 @@ Landmark.init(
       }
     },
     {
-      sequelize,
+      sequelize: client,
       timestamps: false,
       freezeTableName: true,
       underscored: true,
