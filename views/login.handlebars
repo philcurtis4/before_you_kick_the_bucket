@@ -1,17 +1,18 @@
 
 <div>
-    <h2>Register User</h2>
+    <h2>Please Login</h2>
 </div>
 
 
 <div>
-    <form>
-        <label>Username</label>
-        <input placeholder="Please enter a username">
-        
+    <form class="flex flex-col" action="/login" method="POST">
+
+        <label>Email</label>
+        <input name="email" type="text" class="px-3 rounded-lg text-black" placeholder="Email">
+
         <label>Password</label>
-        <input placeholder="Please enter your password">
-        
-        <button type="submit">Submit</button>
+        <input name="password" type="password" class="px-3 rounded-lg text-black" placeholder="Password">
+
+        <button type="submit" class="bg-white text-black rounded-lg my-4 py-1 w-full">Submit</button>
     </form>
 </div>
