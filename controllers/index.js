@@ -7,7 +7,7 @@ const userRoutes = require('./user_routes');
 
 router.use('/', [viewRoutes, searchRoutes, favoriteRoutes, userRoutes]);
 
-router.use('/api', apiRoutes);
+// router.use('/api', apiRoutes);
 
 router.use((req, res) => {
   res.send("<h1>Wrong Route!</h1>")
