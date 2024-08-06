@@ -1,9 +1,9 @@
-<div class="list size-max grid grid-rows-2 grid-flow-col">
+<div class="list size-max grid grid-cols-2 gap-3">
 	{{#each user.favorites}}
-	<section class="size-40 bg-teal-400 rounded-lg p-3 m-3">
-		<div class="landmark-wrapper" data-country="{{landmark_name}}">
-			<img src="">
-			<p>{{landmark_name}}</p>
+	<section class="size-full bg-teal-500 rounded-lg p-3 hover:bg-teal-400">
+		<div class="landmark-wrapper grid justify-items-center mb-4" data-country="{{landmark_name}}">
+			<p class="text-xl">{{landmark_name}}</p>
+			<img src="" class="rounded-lg">
 		</div>
 		<p>Country: {{country_name}}</p>
 		<p>State: {{state_name}}</p>
