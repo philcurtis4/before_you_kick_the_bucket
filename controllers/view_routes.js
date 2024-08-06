@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { User } = require('../models');
+const { User, Favorite } = require('../models');
 
 function redirectGuest(req, res, next) {
 	if (!req.session.user_id) {
@@ -33,21 +33,25 @@ router.get('/search', redirectGuest, async (req, res) => {
 	});
 });
 
-// router.get('/results', async (req, res) => {
-// 	res.render('search_results');
-// });
+function redirectGuest(req, res, next) {
+  if (!req.session.user_id) {
+      return res.redirect('/login');
+  }
+  next();
+}
 
 router.get('/favorites', redirectGuest, async (req, res) => {
     const user = await User.findByPk(req.session.user_id, {
       include: Favorite
     });
-  
-    res.render('favorites', {
-      user: user.get({ plain: true }),
-      title: 'My Destinations - Favorites',
-      user_page: true,
-      favorites: true
-    });
-  });
 
+  res.render('favorites', {
+    user: user.get({ plain: true }),
+    title: 'My Destinations - Favorites',
+    user_page: true,
+    favorites: user.Favorites 
+});
+
+});
+  
 module.exports = router;

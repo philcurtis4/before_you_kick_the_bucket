@@ -34,15 +34,36 @@ async function initMap() {
 
 initMap();
 
+document.addEventListener('DOMContentLoaded', () => {
+  const addFavoriteButtons = document.querySelectorAll('.add-to-favorites');
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const addFavoriteButtons = document.querySelectorAll('.add-to-favorites');
-//   addFavoriteButtons.forEach(button => {
-//       button.addEventListener('click', (event) => {
-//           const destinationId = event.target.dataset.destinationId;
-//           addToFavorites(destinationId);
-//       });
-//   });
-// });
+  addFavoriteButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+          const destinationId = event.target.dataset.destinationId;
+          addToFavorites(destinationId);
+      });
+  });
+
+  function addToFavorites(destinationId) {
+      fetch('/favorites', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ destinationId })
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert('Added to favorites!');
+          } else {
+              alert('Failed to add to favorites: ' + data.message);
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+  }
+});
 
 
