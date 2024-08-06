@@ -53,4 +53,8 @@ router.get('/favorites', redirectGuest, async (req, res) => {
 module.exports = router;router.get('/test', async (req, res) => {
 router.get('/test', async (req, res) => {
   res.render('list');
+module.exports = router; router.get('/test', async (req, res) => {
+  router.get('/test', async (req, res) => {
+    res.render('list');
+  })
 })
