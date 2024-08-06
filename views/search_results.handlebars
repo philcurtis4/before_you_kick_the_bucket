@@ -3,10 +3,16 @@
 <h1>{{state}}</h1>
 <div class="size-96" id="map"></div>
 
-<div class="favorite">
-    {{!-- <h2>Mark as a Favorite Destination
-    </h2>
-        <button type="Click" id="add-to-favorites"></button> --}}
+<div>
+    <p class="centered">
+        <strong>{{this.country}}, {{this.city}}, {{this.state}}</strong>
+        <p>Landmark: {{this.landmark}}</p>
+       <button class="add-to-favorites" data-destination-id="{{place.id}}">Add to Favorites</button>
+    <p>
+</div>
+
+<div>
+    <h2><a href="/list">View All Favorites</a></h2>
 </div>
 
 <script>
