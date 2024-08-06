@@ -1,4 +1,16 @@
 <div class="list size-max grid grid-rows-2 grid-flow-col">
+	{{#each user.favorites}}
+	<section class="size-40 bg-teal-400 rounded-lg p-3 m-3">
+		<div class="landmark-wrapper" data-country="{{landmark_name}}">
+			<img src="">
+			<p>{{landmark_name}}</p>
+		</div>
+		<p>Country: {{country_name}}</p>
+		<p>State: {{state_name}}</p>
+		<p>City: {{city_name}}</p>
+	</section>
+	{{/each}}
 </div>
+
 
 <script src="/js/list.js"></script>

@@ -1,26 +1,22 @@
-const list = document.querySelector('.list');
-const test = [
-  {
-    landmark_name: 'Zoo',
-    country_name: 'Philly'
-  },
-  {
-    landmark_name: 'Boardwalk',
-    country_name: 'AC'
-  }
-]
+async function getImages () {
+	const apiKey = "uG1og2BBDQveA1KvQ2jnwRW9uXAzJbvGeL8zCVxiJhrSXFJMMVUMfIRD"
+	const url = "https://api.pexels.com/v1/search?per_page=1&query=";
+	const favorites = document.querySelectorAll('.landmark-wrapper');
 
-function displayFavs(favs) {
-  for (const fav of favs) {
-    list.insertAdjacentHTML('beforeend', `
-  <section class="size-40 bg-teal-400 rounded-lg p-3 m-3">
-    <p>${fav.landmark_name}</p>
-    <p>Country: ${fav.country_name}</p>
-    <p>Distance: idk</p>
-  </section>
+	favorites.forEach(async favEl => {
+		const country = favEl.dataset.country;
+		const res = await fetch(url + country, {
+			headers: {
+				Authorization: apiKey
+			}
+		});
+		const data = await res.json();
 
-`)
-  }
+		const img = favEl.querySelector('img');
+
+		img.src = data.photos[0].src.medium;
+	})
+
 }
 
-displayFavs(test);
+getImages();

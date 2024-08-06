@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { User } = require('../models');
+const { User, Favorite } = require('../models');
 
 function redirectGuest(req, res, next) {
   if (!req.session.user_id) {
@@ -21,6 +21,20 @@ router.get('/register', async (req, res) => {
 router.get('/login', async (req, res) => {
   res.render('login');
 });
+
+router.get('/list', redirectGuest, async (req, res) => {
+    const user = await User.findByPk(req.session.user_id, {
+      attributes: ['username'],
+      include: Favorite
+    });
+  
+    res.render('list', {
+      user: user.get({ plain: true }),
+      title: 'My Bucket List - Favorites',
+      user_page: true,
+      favorites: true
+    });
+  });
 
 router.get('/search', redirectGuest, async (req, res) => {
 
