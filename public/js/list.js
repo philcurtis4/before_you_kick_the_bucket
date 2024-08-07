@@ -20,14 +20,20 @@ async function getImages() {
 }
 
 async function removeFav(e, favId) {
+	const wrapper = document.querySelector('.list')
+
   const url = `/api/favorites/unfav/${favId}`
-  e.parentNode.style.display = 'none';
+  e.parentNode.remove();
   await fetch(url, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
   });
+	
+	if(!wrapper.children.length){
+		wrapper.innerHTML = '<h3 class="text-center p-4 col-span-full">No Favorites Have Been Added</h3>';
+	}
 }
 
 getImages();
