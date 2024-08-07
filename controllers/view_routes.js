@@ -10,15 +10,23 @@ function redirectGuest(req, res, next) {
   next();
 }
 
-router.get('/', async (req, res) => {
+function redirectUser(req, res, next) {
+	if (req.session.user_id) {
+	  return res.redirect('/search');
+	}
+  
+	next();
+  }
+
+router.get('/', redirectUser, async (req, res) => {
   res.render('homepage')
 })
 
-router.get('/register', async (req, res) => {
+router.get('/register', redirectUser, async (req, res) => {
   res.render('register');
 });
 
-router.get('/login', async (req, res) => {
+router.get('/login', redirectUser, async (req, res) => {
   res.render('login');
 });
 
@@ -43,7 +51,8 @@ router.get('/search', redirectGuest, async (req, res) => {
   res.render('search', {
     user: user.get({
       plain: true
-    })
+    }),
+	search: true
   });
 });
 
@@ -64,7 +73,4 @@ router.get('/favorites', redirectGuest, async (req, res) => {
   });
 });
 
-router.get('/test', async (req, res) => {
-  res.render('list');
-})
 module.exports = router;

@@ -8,6 +8,9 @@
 		<p>Country: {{country_name}}</p>
 		<p>State: {{state_name}}</p>
 		<p>City: {{city_name}}</p>
+		<form class="flex flex-col" action="/remove" method="POST">
+			<button class="bg-white text-black rounded-md my-2 py-1">Delete</button>
+		</form>
 	</section>
 	{{/each}}
 </div>
