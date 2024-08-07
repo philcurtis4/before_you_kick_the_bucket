@@ -24,6 +24,12 @@ To begin the installing of this application, you will need to install packages:
 - [Sessions]
 - [Tailwind]
 
+url for the repository on github: https://github.com/philcurtis4/before_you_kick_the_bucket
+
+Screenshot of User Page: 
+![Image of User Page](./public/images/screenshot.jpg)
+
+
 
 ## Usage
 Nodemon
