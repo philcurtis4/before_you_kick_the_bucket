@@ -19,4 +19,16 @@ async function getImages() {
 
 }
 
+async function removeFav(e, favId) {
+  const url = `/api/favorites/unfav/${favId}`
+  e.parentNode.style.display = 'none';
+  await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+}
+
 getImages();
+
